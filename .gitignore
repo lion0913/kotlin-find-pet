@@ -37,4 +37,4 @@ out/
 .vscode/
 
 # application-secret.yml
-src/main/resources/application-secret.yml
+protect-animal-service/src/main/resources/application-secret.yml
