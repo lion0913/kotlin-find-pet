@@ -12,3 +12,11 @@ sourceSets {
         srcDir("src/main/resources")
     }
 }
+
+tasks {
+    val processResources by getting(Copy::class) {
+        from("src/main/resources")
+        into("build/resources/main")
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+}
