@@ -14,6 +14,10 @@ class ShelterData (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "district_id")
+    val district: District? = null,
+
     @Column
     val desertionNo: String,
 
@@ -26,8 +30,9 @@ class ShelterData (
     @Column
     val findPlace: String,
 
-    @Column
-    val kind: String,
+    @JoinColumn(name = "kind_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    val kind: AnimalKind? = null,
 
     @Column
     val color: String,
@@ -76,4 +81,4 @@ class ShelterData (
     @Column
     val managerTel: String,
 
-    )
+)

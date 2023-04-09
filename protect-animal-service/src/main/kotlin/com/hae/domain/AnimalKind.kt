@@ -15,4 +15,7 @@ class AnimalKind (
     @Column
     val name: String,
 
+    @OneToMany(mappedBy = "kind", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var shelterData: List<ShelterData> = mutableListOf(),
+
 ) : BaseEntity()

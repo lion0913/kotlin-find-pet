@@ -4,7 +4,7 @@ import jakarta.persistence.*
 
 @Entity
 @Table
-class City ( //½Ã, µµ
+class City ( //ï¿½ï¿½, ï¿½ï¿½
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long,
@@ -15,7 +15,7 @@ class City ( //½Ã, µµ
         @Column
         val name: String,
 
-        @OneToMany(fetch = FetchType.LAZY)
+        @OneToMany(mappedBy = "city", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
         val districts: MutableList<District> = mutableListOf(),
 
 ): BaseEntity()
