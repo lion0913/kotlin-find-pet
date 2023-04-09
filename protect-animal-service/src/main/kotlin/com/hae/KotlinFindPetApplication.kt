@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
 
-@EnableBatchProcessing //¹èÄ¡ ÇÁ·Î¼¼½Ì Çã¿ë
+@EnableBatchProcessing //ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 @SpringBootApplication
-@EnableJpaAuditing //ÇØ´ç ¾î³ëÅ×ÀÌ¼ÇÀÌ ÀÖ¾î¾ß AuditingEntityListener°¡ µ¿ÀÛ
+@EnableJpaAuditing //ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ AuditingEntityListenerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 class KotlinFindPetApplication
 
 fun main(args: Array<String>) {

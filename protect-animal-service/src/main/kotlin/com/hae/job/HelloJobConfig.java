@@ -1,52 +1,44 @@
-package com.hae.job;
+package com.hae.job
 
-import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import lombok.RequiredArgsConstructor
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.JobScope;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.batch.core.configuration.annotation.*;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.repeat.RepeatStatus
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
-@RequiredArgsConstructor //=> 생성자 DI를 위한 lombok 어노테이션
-@Configuration //=> Spring Batch의 모든 Job은 @Configuration을 등록해서 사용
+@Configuration
+@RequiredArgsConstructor
+//@EnableBatchProcessing
 public class HelloJobConfig {
-    private final JobBuilderFactory jobBuilderFactory; // 생성자 DI 받음
-    private final StepBuilderFactory stepBuilderFactory; // 생성자 DI 받음
+    private final JobBuilderFactory jobBuilderFactory;
+    private final StepBuilderFactory stepBuilderFactory;
 
-    @Bean
-    public Job simpleJob() {
-        return jobBuilderFactory.get("simpleJob") //=> simpleJob 이란 이름의 Batch Job 생성
-                .start(simpleStep1(null))
-                .next(simpleStep2(null))
-                .build();
+    @Bean("helloJob")
+    public Job helloJob(Step helloStep) {
+        return jobBuilderFactory.get("helloJob")
+            .incrementer(new RunIdIncrementer())
+            .start(helloStep)
+            .build();
     }
 
-    @Bean
     @JobScope
-    public Step simpleStep1(@Value("#{jobParameters[requestDate]}") String requestDate) {
-        return stepBuilderFactory.get("simpleStep1")
-                .tasklet((contribution, chunkContext) -> {
-                    log.info(">>>>> This is Step1");
-                    log.info(">>>>> requestDate = {}", requestDate);
-                    return RepeatStatus.FINISHED;
-//                    throw new IllegalArgumentException("step1에서 실패합니다.");
-                })
-                .build();
+    @Bean("helloStep")
+    public Step helloStep(Tasklet tasklet) {
+        return stepBuilderFactory.get("helloStep")
+            .tasklet(tasklet)
+            .build();
     }
 
+    @StepScope
     @Bean
-    @JobScope
-    public Step simpleStep2(@Value("#{jobParameters[requestDate]}") String requestDate) {
-        return stepBuilderFactory.get("simpleStep2")
-                .tasklet((contribution, chunkContext) -> {
-                    log.info(">>>>> This is Step2");
-                    log.info(">>>>> requestDate = {}", requestDate);
-                    return RepeatStatus.FINISHED;
-                })
-                .build();
+    public Tasklet tasklet() {
+        return ((contribution, chunkContext) -> {
+            System.out.println("Hello Spring Batch");
+            return RepeatStatus.FINISHED;
+        });
     }
 }

@@ -20,22 +20,25 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = "kotlin") //kotlin ÇÃ·¯±×ÀÎ ½ÇÇà
+    apply(plugin = "kotlin") //kotlin ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     apply(plugin = "kotlin-spring")
     apply(plugin = "io.spring.dependency-management")
 
     dependencies {
-        // JWT ÀÎÁõ
+        // JWT ï¿½ï¿½ï¿½ï¿½
         implementation("com.auth0:java-jwt:3.19.2")
 
         //kotlin logging
-        implementation("io.github.microutils:kotlin-logging:1.12.5") //·Î±×¸¦ Á» ´õ ¿¹»Ú°Ô ÀÛ¼ºÇÒ ¼ö ÀÖÀ½
+        implementation("io.github.microutils:kotlin-logging:1.12.5") //ï¿½Î±×¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         //kotlin
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+
+
     }
 
     dependencyManagement {
