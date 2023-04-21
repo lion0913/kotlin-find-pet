@@ -5,13 +5,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-web")
-//    implementation("org.mariadb.jdbc:mysql-java-client")
+    implementation("org.mariadb.jdbc:mariadb-java-client")
     implementation("org.projectlombok:lombok:1.18.22")
 
-    runtimeOnly("com.mysql:mysql-connector-j")
+//    runtimeOnly("com.mysql:mysql-connector-j")
 
     //spring batch
-    implementation ("org.springframework.boot:spring-boot-starter-batch:3.0.4")
+    implementation ("org.springframework.boot:spring-boot-starter-batch")
 
     testImplementation ("org.springframework.batch:spring-batch-test")
 }

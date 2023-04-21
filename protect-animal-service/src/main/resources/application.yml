@@ -3,12 +3,12 @@ spring:
     import: application-secret.yml
   batch:
     job:
-      names: ${job.name:NONE}
+      names: hiJob
     jdbc:
       initialize-schema: always
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/find_pet?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/find_pet?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
     username: root
     password:
   jpa:
@@ -16,4 +16,10 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create
-
+custom:
+  api:
+    service-key:
+    shelter-data-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic
+    animal-kind-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/kind
+    city-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido
+    district-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu
