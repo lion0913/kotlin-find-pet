@@ -1,6 +1,5 @@
 package com.hae.web
 
-import com.hae.model.ShelterApiResponse
 import com.hae.model.ShelterDataApiRequest
 import com.hae.service.ShelterDataService
 import mu.KotlinLogging
@@ -12,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.util.UriComponentsBuilder
 import java.net.URI
 import java.net.URLEncoder
+import java.net.http.HttpClient
+import java.net.http.HttpResponse
 
 
 private val logger = KotlinLogging.logger {}
@@ -36,26 +38,23 @@ class ShelterDataController(
         val headers = HttpHeaders()
         headers.contentType = MediaType.APPLICATION_JSON
 
-        val queryParams = LinkedMultiValueMap<String, String>()
-        queryParams.add("serviceKey", serviceKey)
-        queryParams.add("_type", "json")
+        var builder = UriComponentsBuilder.fromHttpUrl(shelterDataUrl)
+            .queryParam("ServiceKey", serviceKey)
+            .queryParam("up_kind_cd", "417000")
+            .queryParam("_type", "json")
+            .build(true)
 
-        logger.info(serviceKey)
+        var uri = URI(builder.toUriString())
 
-        // 요청 엔티티 생성
-        val requestEntity = HttpEntity<Any>(headers)
-
-        val uri = URI.create(shelterDataUrl)
-        // 요청 보내기
         val response: ResponseEntity<String> = restTemplate.exchange(
-                uri,
-                HttpMethod.GET,
-                requestEntity,
-                String::class.java
+            uri,
+            HttpMethod.GET,
+            HttpEntity<String>(headers),
+            String::class.java
         )
 
-
-        // 응답 결과 처리
+        logger.info(serviceKey)
+        logger.info(uri.toString())
         if (response.statusCode.is2xxSuccessful) {
             logger.info(response.body)
         } else {
