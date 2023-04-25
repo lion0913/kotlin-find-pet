@@ -23,3 +23,6 @@ custom:
     animal-kind-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/kind
     city-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido
     district-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu
+  job:
+    update-animal: 0 0/10 * * * *
+

@@ -40,7 +40,7 @@ class ShelterDataController(
 
         var builder = UriComponentsBuilder.fromHttpUrl(shelterDataUrl)
             .queryParam("ServiceKey", serviceKey)
-            .queryParam("up_kind_cd", "417000")
+//            .queryParam("up_kind_cd", "417000")
             .queryParam("_type", "json")
             .build(true)
 

@@ -38,3 +38,4 @@ out/
 
 # application-secret.yml
 protect-animal-service/src/main/resources/application-secret.yml
+protect-animal-service/src/main/kotlin/com/hae/domain/job/JobConfiguration.kt

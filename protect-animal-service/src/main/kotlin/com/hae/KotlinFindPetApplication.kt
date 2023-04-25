@@ -4,10 +4,11 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing
+import org.springframework.scheduling.annotation.EnableScheduling
 
-//@EnableBatchProcessing //��ġ ���μ��� ���
 @SpringBootApplication
-@EnableJpaAuditing //�ش� ������̼��� �־�� AuditingEntityListener�� ����
+@EnableJpaAuditing
+@EnableScheduling //spring scheduling 기능 사용
 //@EnableBatchProcessing
 class KotlinFindPetApplication
 
