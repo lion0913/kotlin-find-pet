@@ -1,25 +1,25 @@
 package com.hae.config
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
 
 @Component
 @ConfigurationProperties(prefix = "custom")
 class AppProperties {
-    lateinit var api: ApiUrl
-    lateinit var job: JobCron
+    var api: ApiUrl? = null
+    var job: JobCron? = null
 
     class ApiUrl {
-        lateinit var serviceKey: String
-        lateinit var shelterDataUrl: String
-        lateinit var animalKindUrl: String
-        lateinit var cityUrl: String
-        lateinit var districtUrl: String
+        var serviceKey: String? = null
+        var shelterDataUrl: String? = null
+        var animalKindUrl: String? = null
+        var cityUrl: String? = null
+        var districtUrl: String? = null
     }
 
     class JobCron {
-        lateinit var updateAnimal: String
+        var test: String? = null
+        var updateAnimal: String? = null
     }
-
-
 }

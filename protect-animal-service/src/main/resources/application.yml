@@ -18,11 +18,12 @@ spring:
       ddl-auto: create
 custom:
   api:
-    service-key:
-    shelter-data-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic
-    animal-kind-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/kind
-    city-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido
-    district-url: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu
+    serviceKey:
+    shelterDataUrl: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic
+    animalKindUrl: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/kind
+    cityUrl: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sido
+    districtUrl: http://apis.data.go.kr/1543061/abandonmentPublicSrvc/sigungu
   job:
-    update-animal: 0 0/10 * * * *
+    test: 0/1 * * * * *
+    updateAnimal: 0 0/10 * * * *
 
