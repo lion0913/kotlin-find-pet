@@ -35,6 +35,7 @@ subprojects {
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         implementation("org.jetbrains.kotlin:kotlin-reflect")
 
+        testImplementation ("org.hamcrest:hamcrest-core:2.2")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 

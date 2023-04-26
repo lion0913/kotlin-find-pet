@@ -1,7 +1,8 @@
 package com.hae
 
 import com.hae.config.AppProperties
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.hamcrest.CoreMatchers.equalTo
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.Assertions.fail
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -28,7 +29,7 @@ class CronJobTest {
 
         // Check that the task has run 5 times
         try {
-            assertEquals(5, counter, "Task did not run 5 times")
+            assertThat(counter, equalTo(5))
         } catch (e: AssertionError) {
             fail<String>(e.message)
         }

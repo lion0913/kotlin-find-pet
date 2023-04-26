@@ -1,5 +1,6 @@
 package com.hae.web
 
+import com.hae.config.AppProperties
 import com.hae.model.ShelterDataApiRequest
 import com.hae.service.ShelterDataService
 import mu.KotlinLogging
@@ -25,16 +26,14 @@ private val logger = KotlinLogging.logger {}
 class ShelterDataController(
         private val shelterDataService: ShelterDataService,
         private val restTemplate: RestTemplate,
-        @Value("\${custom.api.service-key}") private val serviceKey: String,
-        @Value("\${custom.api.shelter-data-url}") private val shelterDataUrl: String,
-        @Value("\${custom.api.animal-kind-url}") private val animalKindUrl: String,
-        @Value("\${custom.api.city-url}") private val cityUrl: String,
-        @Value("\${custom.api.district-url}") private val districtUrl: String,
-
+        private val properties: AppProperties,
 ) {
 
     @PostMapping("/create")
     fun create(@RequestBody shelterDataApiRequest: ShelterDataApiRequest) {
+        val serviceKey = properties.api!!.serviceKey!!
+        val shelterDataUrl = properties.api!!.shelterDataUrl!!
+
         val headers = HttpHeaders()
         headers.contentType = MediaType.APPLICATION_JSON
 
